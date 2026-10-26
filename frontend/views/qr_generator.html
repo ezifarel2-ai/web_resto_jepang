@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVORIA — Generator QR Code Meja & Takeaway</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0c10;
+            --gold: #d8b26e;
+            --gold-light: #dfc49f;
+            --text-dark: #191b24;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0b0c10;
+            color: #f5f6f8;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: rgba(19, 21, 29, 0.95);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+
+        .controls-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .input-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .input-control:focus {
+            border-color: var(--gold);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, var(--gold), #b88f48);
+            color: #0b0c10;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            box-shadow: 0 4px 15px rgba(216, 178, 110, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-nav {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #c9ccd6;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            color: #fff;
+            border-color: var(--gold);
+        }
+
+        /* Instructions Banner */
+        .info-banner {
+            max-width: 1200px;
+            margin: 24px auto 0;
+            padding: 16px 20px;
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            color: var(--gold-light);
+        }
+
+        /* QR Grid Preview */
+        .qr-grid {
+            max-width: 1200px;
+            margin: 28px auto 0;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        /* Printable Card */
+        .qr-card {
+            background: #ffffff;
+            color: #191b24;
+            border-radius: 16px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            border: 2px dashed #d1d5db;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .qr-card-header {
+            margin-bottom: 14px;
+        }
+
+        .qr-crest {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #b88f48;
+            letter-spacing: 0.05em;
+        }
+
+        .qr-subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        .qr-table-pill {
+            background: #0b0c10;
+            color: #d8b26e;
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 6px 18px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .qr-table-pill.takeaway {
+            background: #059669;
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .qr-image-wrapper {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 14px;
+        }
+
+        .qr-image-wrapper img {
+            width: 170px;
+            height: 170px;
+            display: block;
+        }
+
+        .qr-instructions {
+            font-size: 0.78rem;
+            color: #374151;
+            line-height: 1.45;
+            margin-bottom: 6px;
+        }
+
+        .qr-instructions strong {
+            color: #111827;
+        }
+
+        .qr-direct-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #059669;
+            background: #ecfdf5;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-top: 6px;
+            display: inline-block;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0 !important;
+            }
+
+            .top-bar, .info-banner {
+                display: none !important;
+            }
+
+            .qr-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+                padding: 10px !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .qr-card {
+                border: 1.5px dashed #9ca3af !important;
+                box-shadow: none !important;
+                padding: 20px !important;
+                break-inside: avoid !important;
+            }
+
+            .qr-image-wrapper img {
+                width: 160px !important;
+                height: 160px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Controller Bar -->
+    <header class="top-bar">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--gold);">佐和</span>
+            <div class="brand-title">SAVORIA QR TABLE STICKERS</div>
+        </div>
+
+        <div class="controls-row">
+            <label style="font-size: 0.8rem; color: #8e94a5;">Jumlah Meja:</label>
+            <input type="number" id="tableCountInput" class="input-control" value="12" min="1" max="50" style="width: 70px;">
+
+            <label style="font-size: 0.8rem; color: #8e94a5; margin-left: 8px;">Base Host:</label>
+            <input type="text" id="baseHostInput" class="input-control" placeholder="http://127.0.0.1:8000" style="width: 220px;">
+
+            <button class="btn-print" id="printAllBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                <span>Cetak Semua Stiker</span>
+            </button>
+
+            <a href="/kitchen" class="btn-nav">
+                <span>Layar Dapur</span>
+            </a>
+            <a href="/" class="btn-nav">
+                <span>Halaman Tamu</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Info Banner -->
+    <section class="info-banner">
+        <div>
+            <strong>💡 Panduan Cetak Meja:</strong>
+            Gunting kartu di garis putus-putus dan tempelkan di setiap nomor meja fisik. Saat tamu memindai dengan kamera HP mereka, sistem langsung mengunci nomor meja tamu tanpa perlu memesan ke kasir.
+        </div>
+        <button class="btn-print" onclick="window.print()" style="padding: 6px 14px; font-size: 0.8rem;">
+            Print Sekarang
+        </button>
+    </section>
+
+    <!-- QR Grid -->
+    <main class="qr-grid" id="qrCardsGrid">
+        <!-- Injected via JavaScript -->
+    </main>
+
+    <script>
+        const tableCountInput = document.getElementById('tableCountInput');
+        const baseHostInput = document.getElementById('baseHostInput');
+        const qrCardsGrid = document.getElementById('qrCardsGrid');
+        const printAllBtn = document.getElementById('printAllBtn');
+
+        // Set default Host URL ke host browser saat ini
+        const defaultHost = window.location.origin;
+        baseHostInput.value = defaultHost;
+
+        function renderQRCards() {
+            const count = parseInt(tableCountInput.value) || 12;
+            const baseUrl = baseHostInput.value.replace(/\/+$/, '') || window.location.origin;
+            let cardsHtml = '';
+
+            // 1. Kartu Meja 1 sampai N
+            for (let i = 1; i <= count; i++) {
+                const tableStr = `Meja ${String(i).padStart(2, '0')}`;
+                const targetUrl = `${baseUrl}/?table=${i}`;
+                const qrImgSrc = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(targetUrl)}&margin=1`;
+
+                cardsHtml += `
+                    <div class="qr-card">
+                        <div class="qr-card-header">
+                            <div class="qr-crest">SAVORIA</div>
+                            <div class="qr-subtitle">ARTISANAL JAPANESE DINING</div>
+                        </div>
+
+                        <div class="qr-table-pill">${tableStr}</div>
+
+                        <div class="qr-image-wrapper">
+                            <img src="${qrImgSrc}" alt="QR ${tableStr}" loading="lazy">
+                        </div>
+
+                        <div class="qr-instructions">
+                            <strong>1. Buka kamera ponsel Anda</strong><br>
+                            2. Arahkan ke QR Code di atas<br>
+                            3. Pilih hidangan & langsung kirim ke dapur
+                        </div>
+
+                        <div class="qr-direct-badge">
+                            ✓ Pesanan Langsung Dimasak Koki
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 2. Kartu Khusus Takeaway / Bungkus
+            const takeawayUrl = `${baseUrl}/?mode=takeaway`;
+            const qrTakeawaySrc = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(takeawayUrl)}&margin=1`;
+            cardsHtml += `
+                <div class="qr-card">
+                    <div class="qr-card-header">
+                        <div class="qr-crest">SAVORIA</div>
+                        <div class="qr-subtitle">ARTISANAL JAPANESE DINING</div>
+                    </div>
+
+                    <div class="qr-table-pill takeaway">BUNGKUS / TAKEAWAY</div>
+
+                    <div class="qr-image-wrapper">
+                        <img src="${qrTakeawaySrc}" alt="QR Takeaway" loading="lazy">
+                    </div>
+
+                    <div class="qr-instructions">
+                        <strong>Scan untuk Pesanan Bawa Pulang</strong><br>
+                        Pilih menu & ambil saat hidangan selesai disiapkan.
+                    </div>
+
+                    <div class="qr-direct-badge" style="background: #eff6ff; color: #2563eb;">
+                        ✓ Tanpa Antre di Meja Kasir
+                    </div>
+                </div>
+            `;
+
+            qrCardsGrid.innerHTML = cardsHtml;
+        }
+
+        tableCountInput.addEventListener('input', renderQRCards);
+        baseHostInput.addEventListener('input', renderQRCards);
+        printAllBtn.addEventListener('click', () => window.print());
+
+        renderQRCards();
+    </script>
+</body>
+</html>

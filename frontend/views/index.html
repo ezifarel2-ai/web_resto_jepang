@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVORIA — Artisanal Japanese Dining & Concierge</title>
+    <meta name="description" content="Restoran Jepang kontemporer di Jakarta. Menghidangkan ramen kaldu lambat, wagyu pilihan, sushi segar, dan kurasi set menu personal.">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css?v=3.0">
+</head>
+<body>
+    <!-- Subtle Ambient Texture Grid -->
+    <div class="ambient-texture"></div>
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <a href="/" class="brand-link" id="brandLogo">
+                    <span class="brand-kanji-crest">佐和</span>
+                    <div class="brand-text">
+                        <span class="brand-title">SAVORIA</span>
+                        <span class="brand-sub">ARTISANAL JAPANESE DINING</span>
+                    </div>
+                </a>
+                <div id="tableIndicatorBadge" class="table-badge-pill" style="display: none; align-items: center; gap: 6px; background: rgba(197, 160, 89, 0.15); border: 1px solid rgba(197, 160, 89, 0.35); padding: 5px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; color: #d8b26e;">
+                    <span style="width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+                    <span id="tableIndicatorText">Meja 01</span>
+                </div>
+            </div>
+
+            <nav class="header-actions">
+                <button class="action-btn concierge-btn" id="openChatBtn" title="Buka Panduan Kuliner Personal">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>Concierge Meja</span>
+                </button>
+                <button class="action-btn planner-btn" id="openComboBtn" title="Kurasi Paket Berdasarkan Anggaran">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span>Kurasi Set Menu</span>
+                </button>
+                <button class="action-btn track-btn" id="openTrackBtn" title="Pantau Proses Memasak Pesanan Anda">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 14"></polyline>
+                    </svg>
+                    <span>Lacak Pesanan</span>
+                </button>
+                <button class="action-btn cart-btn" id="openCartBtn" title="Lihat Keranjang Pesanan">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-title-text">Pesanan</span>
+                    <span class="cart-pill-count" id="cartCountBadge">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <!-- Artisanal Hero Section -->
+        <section class="hero-luxury-wrapper">
+            <div class="hero-ambient-glow"></div>
+            
+            <div class="hero-grid-layout">
+                <!-- Left: Narrative & Discovery Hub -->
+                <div class="hero-narrative-panel">
+                    <div class="hero-zen-eyebrow">
+                        <span class="zen-seal">割烹</span>
+                        <span class="zen-text">SAVORIA • ARTISANAL JAPANESE DINING</span>
+                        <span class="zen-badge-online">Meja & Takeaway</span>
+                    </div>
+
+                    <h1 class="hero-heading-master">
+                        Cita Rasa Otentik Jepang,<br>
+                        <span class="text-gold-gradient">Tersaji Anggun di Meja Anda</span>
+                    </h1>
+
+                    <p class="hero-lead-text">
+                        Pesan langsung dari kenyamanan meja Anda atau bawa pulang hidangan pilihan. Nikmati olahan daging Wagyu meltique, kaldu ramen rebus lambat 12 jam, serta sushi segar dengan sentuhan tradisi kuliner Tokyo.
+                    </p>
+
+                    <!-- Integrated Search Field with Discovery Chips -->
+                    <div class="hero-search-wrapper">
+                        <div class="search-field">
+                            <svg class="search-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" id="searchInput" placeholder="Cari hidangan (ramen, wagyu, sushi, matcha, atau selera rasa)..." autocomplete="off" spellcheck="false">
+                            <button id="clearSearch" class="clear-search-btn hidden" aria-label="Hapus Pencarian">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="hero-quick-tags">
+                            <span class="tag-hint">Populer:</span>
+                            <button type="button" class="quick-dish-tag" data-search="Wagyu">Wagyu Meltique</button>
+                            <button type="button" class="quick-dish-tag" data-search="Ramen">Tonkotsu Ramen</button>
+                            <button type="button" class="quick-dish-tag" data-search="Sushi">Salmon Platter</button>
+                            <button type="button" class="quick-dish-tag" data-search="Matcha">Uji Matcha</button>
+                            <button type="button" class="quick-dish-tag" data-search="Mochi">Daifuku</button>
+                        </div>
+                    </div>
+
+                    <!-- Refined Navigation Action Bar -->
+                    <div class="hero-cta-group">
+                        <a href="#menuCatalogSection" class="btn-hero-primary" id="heroScrollMenuBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M19 12l-7 7-7-7"/>
+                            </svg>
+                            <span>Jelajahi Buku Menu</span>
+                        </a>
+                        <button type="button" class="btn-hero-concierge" id="heroConciergeTrigger">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            <span>Tanya AI Concierge</span>
+                        </button>
+                        <button type="button" class="btn-hero-planner" id="heroPlannerTrigger">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <span>Kurasi Budget</span>
+                        </button>
+                    </div>
+
+                    <!-- Authentic Culinary Hallmarks (Replaces tacky startup stats) -->
+                    <div class="hero-hallmarks-strip">
+                        <div class="hallmark-item">
+                            <span class="hallmark-kanji">炭火</span>
+                            <div class="hallmark-text">
+                                <strong>Sumibi Grill</strong>
+                                <span>Wagyu & Tare Saus</span>
+                            </div>
+                        </div>
+                        <div class="hallmark-divider"></div>
+                        <div class="hallmark-item">
+                            <span class="hallmark-kanji">出汁</span>
+                            <div class="hallmark-text">
+                                <strong>12-Hour Dashi</strong>
+                                <span>Kaldu Kaya Rasa</span>
+                            </div>
+                        </div>
+                        <div class="hallmark-divider"></div>
+                        <div class="hallmark-item">
+                            <span class="hallmark-kanji">決済</span>
+                            <div class="hallmark-text">
+                                <strong>Bayar Mandiri</strong>
+                                <span>QRIS Meja / Kasir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Culinary Spotlight Showcase -->
+                <div class="hero-showcase-panel">
+                    <div class="showcase-card-container">
+                        <!-- Main Featured Card (Seamless Luxury Unit) -->
+                        <div class="showcase-main-card" id="heroSpotlightCard">
+                            <div class="showcase-img-wrap">
+                                <img id="heroSpotlightImg" src="/static/images/wagyu_don.jpg" alt="Wagyu Beef Donburi" class="showcase-img">
+                                <div class="showcase-img-overlay"></div>
+                                <span class="showcase-kanji-watermark" id="heroSpotlightKanji">和牛焼肉</span>
+                                <div class="showcase-badge-top">
+                                    <span class="badge-role" id="heroSpotlightTag">Paling Diminati</span>
+                                </div>
+                                <div class="showcase-prep-pill" id="heroSpotlightPrep">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>15 mnt saji</span>
+                                </div>
+                            </div>
+
+                            <div class="showcase-body">
+                                <div class="showcase-header-row">
+                                    <div class="showcase-dish-meta">
+                                        <span class="showcase-category" id="heroSpotlightCategory">HIDANGAN UTAMA</span>
+                                        <h3 class="showcase-dish-title" id="heroSpotlightTitle">Wagyu Beef Donburi</h3>
+                                        <span class="showcase-dish-jp" id="heroSpotlightJp">和牛焼肉丼 • Tender Meltique & Onsen Egg</span>
+                                    </div>
+                                    <div class="showcase-price-box">
+                                        <span class="showcase-price" id="heroSpotlightPrice">Rp 85.000</span>
+                                    </div>
+                                </div>
+
+                                <p class="showcase-dish-desc" id="heroSpotlightDesc">
+                                    Irisan tipis daging sapi Wagyu meltique lembut dalam karamel tare manis gurih, wijen sangrai, dan onsen egg lumer.
+                                </p>
+
+                                <!-- Integrated Pairing Hint -->
+                                <div class="showcase-pairing-strip">
+                                    <span class="pairing-badge">PAIRING</span>
+                                    <span class="pairing-text" id="heroPairingTip">Sandingkan Wagyu Donburi dengan Authentic Iced Matcha Latte</span>
+                                </div>
+
+                                <div class="showcase-actions">
+                                    <button type="button" class="btn-spotlight-detail" id="heroDetailTrigger">
+                                        Detail Resep
+                                    </button>
+                                    <button type="button" class="btn-spotlight-add" id="heroAddOrderTrigger">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                        <span>+ Pesan ke Meja</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Dish Switcher Tabs -->
+                        <div class="showcase-dish-switcher">
+                            <button type="button" class="switcher-item active" data-dish="wagyu" title="Wagyu Beef Donburi">
+                                <img src="/static/images/wagyu_don.jpg" alt="Wagyu">
+                                <div class="switcher-info">
+                                    <span class="switcher-name">Wagyu Donburi</span>
+                                    <span class="switcher-price">Rp 85.000</span>
+                                </div>
+                            </button>
+                            <button type="button" class="switcher-item" data-dish="ramen" title="Tonkotsu Ramen Spesial">
+                                <img src="/static/images/ramen.jpg" alt="Ramen">
+                                <div class="switcher-info">
+                                    <span class="switcher-name">Tonkotsu Ramen</span>
+                                    <span class="switcher-price">Rp 58.000</span>
+                                </div>
+                            </button>
+                            <button type="button" class="switcher-item" data-dish="sushi" title="Salmon Sushi & Sashimi Platter">
+                                <img src="/static/images/sushi.jpg" alt="Sushi">
+                                <div class="switcher-info">
+                                    <span class="switcher-name">Salmon Platter</span>
+                                    <span class="switcher-price">Rp 75.000</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls: Category Pills & Filters -->
+            <div class="menu-controls" id="menuControlToolbar">
+                <div class="category-tabs" id="categoryPills">
+                    <button class="tab-item active" data-category="">Semua Menu</button>
+                    <button class="tab-item" data-category="Utama">Hidangan Utama</button>
+                    <button class="tab-item" data-category="Pembuka">Makanan Pembuka</button>
+                    <button class="tab-item" data-category="Minuman">Minuman & Ocha</button>
+                    <button class="tab-item" data-category="Penutup">Pencuci Mulut</button>
+                </div>
+
+                <div class="secondary-filters">
+                    <div class="filter-chips-group">
+                        <button class="filter-chip" id="filterHalal" data-active="false">
+                            Pilihan Halal
+                        </button>
+                        <button class="filter-chip" id="filterSpicy" data-active="false">
+                            Menu Pedas
+                        </button>
+                        <button class="filter-chip" id="filterVeg" data-active="false">
+                            Vegetarian
+                        </button>
+                    </div>
+
+                    <div class="sort-dropdown-wrap">
+                        <select id="sortBySelect" class="sort-dropdown" aria-label="Urutkan Menu">
+                            <option value="popular">Kurasi Paling Diminati</option>
+                            <option value="rating">Rating Tertinggi Tamu</option>
+                            <option value="price_asc">Harga: Rendah ke Tinggi</option>
+                            <option value="price_desc">Harga: Tinggi ke Rendah</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section class="menu-catalog-section" id="menuCatalogSection">
+            <div class="catalog-header">
+                <div>
+                    <h2 id="resultsTitle" class="catalog-title">Daftar Hidangan Pilihan</h2>
+                    <p class="catalog-caption">Dipersiapkan segar oleh dapur kami saat pesanan Anda dikonfirmasi.</p>
+                </div>
+                <div class="catalog-meta">
+                    <span id="resultsCount" class="count-badge">12 hidangan tersedia</span>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingIndicator" class="loading-panel hidden">
+                <div class="simple-spinner"></div>
+                <span>Memuat katalog hidangan...</span>
+            </div>
+
+            <!-- Food Grid -->
+            <div id="foodGrid" class="catalog-grid">
+                <!-- Food cards injected dynamically via app.js -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-panel hidden">
+                <p class="empty-title">Hidangan Tidak Ditemukan</p>
+                <p class="empty-desc">Tidak ada menu yang sesuai dengan kriteria filter saat ini.</p>
+                <div class="empty-btn-group">
+                    <button class="btn-secondary" id="resetFiltersBtn">Reset Kriteria Pencarian</button>
+                    <button class="btn-primary" id="openComboFromEmptyBtn">Rancang Paket Hemat Menu</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Restoran & Link Staf Admin -->
+    <footer class="savoria-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 40px 24px 60px; text-align: center; color: #6b7280; font-size: 0.8rem; background: rgba(12, 13, 18, 0.6); position: relative; z-index: 10;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                <span style="font-family: 'Cinzel', serif; font-weight: 700; color: #d8b26e; letter-spacing: 0.08em; font-size: 0.95rem;">SAVORIA JAPANESE DINING</span>
+                <span style="color: rgba(255,255,255,0.15);">•</span>
+                <span>Artisanal Japanese Craft & Table Service</span>
+            </div>
+            <div style="font-size: 0.74rem; color: #525866;">
+                Buka Setiap Hari: 11:00 - 22:00 WIB • Layanan Pemesanan Otomatis dari Meja Tamu
+            </div>
+            <div style="margin-top: 8px;">
+                <a href="/admin" class="staff-portal-link" style="color: rgba(255, 255, 255, 0.35); text-decoration: none; font-size: 0.76rem; border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 999px; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d8b26e'; this.style.borderColor='rgba(216,178,110,0.4)';" onmouseout="this.style.color='rgba(255,255,255,0.35)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Portal Staf & Admin Restoran</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- SET MENU PLANNER (BUDGET & TASTE OPTIMIZER)    -->
+    <!-- ============================================== -->
+    <div id="comboModal" class="sheet-backdrop hidden">
+        <div class="dialog-box planner-dialog">
+            <div class="dialog-head">
+                <div>
+                    <span class="dialog-tag">KURASI OTOMATIS</span>
+                    <h3 class="dialog-title">Perencana Set Menu</h3>
+                    <p class="dialog-sub">Tentukan batas anggaran dan jumlah tamu. Sistem kami akan menyusun kombinasi hidangan utama, minuman, dan penutup yang paling harmonis.</p>
+                </div>
+                <button class="sheet-close-btn" id="closeComboBtn">✕</button>
+            </div>
+
+            <div class="planner-form">
+                <div class="field-item">
+                    <label for="comboBudgetInput" class="field-label">Target Anggaran Total:</label>
+                    <div class="currency-input-wrap">
+                        <span class="curr-unit">Rp</span>
+                        <input type="number" id="comboBudgetInput" value="100000" min="30000" max="500000" step="5000">
+                    </div>
+                    <input type="range" id="comboBudgetSlider" min="30000" max="300000" step="5000" value="100000" class="custom-range">
+                    <div class="range-labels">
+                        <span>Rp 30.000</span>
+                        <span>Rp 150.000</span>
+                        <span>Rp 300.000</span>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field-item flex-1">
+                        <label for="comboPeopleSelect" class="field-label">Jumlah Tamu:</label>
+                        <select id="comboPeopleSelect" class="custom-select">
+                            <option value="1">1 Orang (Solo Dining)</option>
+                            <option value="2" selected>2 Orang (Duo / Pasangan)</option>
+                            <option value="3">3 - 4 Orang (Keluarga)</option>
+                        </select>
+                    </div>
+                    <div class="field-item flex-1">
+                        <label for="comboTasteSelect" class="field-label">Preferensi Karakter Rasa:</label>
+                        <select id="comboTasteSelect" class="custom-select">
+                            <option value="all">Seimbang & Lengkap</option>
+                            <option value="gurih">Gurih & Berkaldu (Umami)</option>
+                            <option value="pedas">Karakter Pedas Hangat</option>
+                            <option value="sehat">Rendah Kalori & Segar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="generateComboBtn" class="btn-primary full-width">
+                    Susun Rekomendasi Set Menu
+                </button>
+            </div>
+
+            <!-- Planner Result -->
+            <div id="comboResultBox" class="planner-result-card hidden">
+                <div class="result-card-head">
+                    <div>
+                        <h4 id="comboResultTitle" class="result-title">Savoria Curated Set</h4>
+                        <p id="comboResultDesc" class="result-desc"></p>
+                    </div>
+                    <div class="result-price-wrap">
+                        <span class="price-caption">Total Set</span>
+                        <span id="comboTotalPrice" class="result-price-val">Rp 98.000</span>
+                        <span id="comboSavingsBadge" class="result-savings-pill">Sisa: Rp 2.000</span>
+                    </div>
+                </div>
+
+                <div class="result-items-list" id="comboItemsList">
+                    <!-- Injected via JS -->
+                </div>
+
+                <div class="result-card-foot">
+                    <span class="cal-note">Estimasi Energi: <strong id="comboTotalCalories">1.120 kkal</strong></span>
+                    <button id="addAllComboToCartBtn" class="btn-primary">
+                        Pesan Seluruh Set Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- FOOD DETAIL MODAL                              -->
+    <!-- ============================================== -->
+    <div id="foodDetailModal" class="sheet-backdrop hidden">
+        <div class="dialog-box detail-dialog">
+            <button class="sheet-close-btn" id="closeDetailBtn">✕</button>
+            <div class="detail-split">
+                <div class="detail-visual">
+                    <img id="detailImage" src="" alt="Foto Hidangan" class="detail-img">
+                    <span id="detailCategoryBadge" class="detail-category-tag">Utama</span>
+                </div>
+                <div class="detail-article">
+                    <div class="detail-title-group">
+                        <span id="detailJapaneseName" class="detail-kanji-sub"></span>
+                        <h3 id="detailName" class="detail-main-name"></h3>
+                        <div class="detail-spec-line">
+                            <span class="spec-highlight" id="detailRating">★ 4.9</span>
+                            <span class="spec-sep">•</span>
+                            <span id="detailPrepTime">15 menit</span>
+                            <span class="spec-sep">•</span>
+                            <span id="detailCalories">620 kkal</span>
+                        </div>
+                    </div>
+
+                    <p id="detailDescription" class="detail-body-text"></p>
+
+                    <div class="detail-tags-cluster" id="detailTags">
+                        <!-- Dynamic tags -->
+                    </div>
+
+                    <!-- Pairing Suggestions -->
+                    <div class="pairing-container">
+                        <span class="pairing-label">Rekomendasi Pasangan Hidangan:</span>
+                        <div class="pairing-list" id="detailPairings">
+                            <!-- Pairing mini cards -->
+                        </div>
+                    </div>
+
+                    <div class="detail-purchase-bar">
+                        <div>
+                            <span class="price-caption">Harga Porsi</span>
+                            <span id="detailPrice" class="purchase-price">Rp 58.000</span>
+                        </div>
+                        <div class="quantity-picker">
+                            <button id="detailQtyMinus" class="qty-control" aria-label="Kurangi Jumlah">−</button>
+                            <span id="detailQtyDisplay" class="qty-count">1</span>
+                            <button id="detailQtyPlus" class="qty-control" aria-label="Tambah Jumlah">+</button>
+                        </div>
+                        <button id="detailAddToCartBtn" class="btn-primary">
+                            Tambahkan ke Pesanan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SHOPPING CART SHEET                            -->
+    <!-- ============================================== -->
+    <div id="cartDrawer" class="sheet-backdrop hidden">
+        <div class="sheet-container cart-sheet">
+            <div class="sheet-head">
+                <div>
+                    <h3 class="sheet-title">Pesanan Meja</h3>
+                    <p class="sheet-sub">Periksa kembali daftar hidangan sebelum dikirim ke kasir</p>
+                </div>
+                <button class="sheet-close-btn" id="closeCartBtn">✕</button>
+            </div>
+
+            <div class="cart-scroll-area" id="cartItemsList">
+                <!-- Cart rows injected via JS -->
+            </div>
+
+            <div class="cart-footer-panel" id="cartOptionsSection">
+                <div class="service-type-toggle">
+                    <button class="type-btn active" id="modeDineIn" data-mode="dine_in">Makan di Tempat (Dine In)</button>
+                    <button class="type-btn" id="modeTakeaway" data-mode="takeaway">Bungkus (Takeaway)</button>
+                </div>
+
+                <div class="order-form-fields">
+                    <div class="field-item" id="tableField">
+                        <label for="tableNumberInput" class="field-label" id="tableLabel">Nomor Meja:</label>
+                        <div style="position: relative;">
+                            <input type="text" id="tableNumberInput" placeholder="Contoh: Meja 08" value="Meja 08">
+                            <span id="tableLockBadge" style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 0.72rem; background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 8px; border-radius: 4px; font-weight: 600;">🔒 Terkunci dari QR</span>
+                        </div>
+                    </div>
+                    <div class="field-item">
+                        <label for="customerNameInput" class="field-label">Nama Pemesan:</label>
+                        <input type="text" id="customerNameInput" placeholder="Nama Anda..." value="Tamu Meja">
+                    </div>
+                    <div class="field-item">
+                        <label for="cartNotesInput" class="field-label">Catatan Tambahan (Opsional):</label>
+                        <input type="text" id="cartNotesInput" placeholder="Contoh: kuah dipisah, less ice, dll...">
+                    </div>
+                </div>
+
+                <div class="bill-summary">
+                    <div class="bill-line">
+                        <span>Subtotal Hidangan</span>
+                        <span id="cartSubtotal">Rp 0</span>
+                    </div>
+                    <div class="bill-line">
+                        <span>Pajak Restoran (10%)</span>
+                        <span id="cartTax">Rp 0</span>
+                    </div>
+                    <div class="bill-line">
+                        <span>Biaya Layanan (5%)</span>
+                        <span id="cartService">Rp 0</span>
+                    </div>
+                    <div class="bill-total-line">
+                        <span>Total Pembayaran</span>
+                        <span id="cartGrandTotal" class="total-highlight">Rp 0</span>
+                    </div>
+                </div>
+
+                <!-- PILIHAN METODE TRANSAKSI PEMBAYARAN -->
+                <div class="payment-method-panel" style="margin-bottom: 14px;">
+                    <label class="field-label" style="display: block; margin-bottom: 6px; font-size: 0.8rem; color: #a1a7b7;">Pilih Cara Transaksi:</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                        <button type="button" class="pay-method-btn active" id="payMethodQris" data-method="qris" style="background: rgba(197, 160, 89, 0.15); border: 1px solid rgba(197, 160, 89, 0.45); border-radius: 8px; padding: 9px 10px; color: #fff; cursor: pointer; text-align: left; transition: all 0.2s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 1.25rem;">📱</span>
+                                <div>
+                                    <div style="font-weight: 700; font-size: 0.85rem; color: #d8b26e;">QRIS Digital</div>
+                                    <div style="font-size: 0.68rem; color: #c9ccd6;">Bayar di HP, bebas kasir</div>
+                                </div>
+                            </div>
+                        </button>
+                        <button type="button" class="pay-method-btn" id="payMethodKasir" data-method="kasir" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 9px 10px; color: #fff; cursor: pointer; text-align: left; transition: all 0.2s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 1.25rem;">💵</span>
+                                <div>
+                                    <div style="font-weight: 700; font-size: 0.85rem; color: #8e94a5;">Bayar di Kasir</div>
+                                    <div style="font-size: 0.68rem; color: #6c7283;">Scan barcode di kasir</div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cart-cta-group">
+                    <button id="checkoutDirectBtn" class="btn-direct-order" style="width: 100%; background: linear-gradient(135deg, #d8b26e, #b88f48); color: #0b0c10; font-weight: 700; font-size: 0.96rem; padding: 14px 18px; border: none; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 20px rgba(216, 178, 110, 0.35); transition: all 0.2s ease;">
+                        <span id="checkoutBtnLabel">✨ Lanjut Bayar QRIS & Kirim ke Dapur</span>
+                    </button>
+                    <div style="font-size: 0.74rem; color: #8e94a5; text-align: center; margin-top: 6px;" id="checkoutHelperText">
+                        Pesanan langsung dikirim ke koki dapur tanpa perlu ke kasir
+                    </div>
+                    <button id="clearCartBtn" class="btn-link-danger" style="margin-top: 8px;">Kosongkan Daftar Pesanan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- ORDER SUCCESS CONFIRMATION MODAL               -->
+    <!-- ============================================== -->
+    <div id="orderSuccessModal" class="sheet-backdrop hidden">
+        <div class="dialog-box invoice-dialog">
+            <div class="invoice-check" id="orderSuccessIcon">✓</div>
+            <h3 class="dialog-title" id="orderSuccessTitle">Pesanan Berhasil Terkirim ke Dapur!</h3>
+            <p class="dialog-sub" id="orderSuccessSub">Pesanan Anda telah otomatis masuk ke antrean koki Savoria. Anda tidak perlu ke kasir atau memanggil pelayan, hidangan akan diantarkan langsung ke meja Anda.</p>
+
+            <div class="invoice-receipt" id="receiptBox">
+                <!-- Receipt details injected via JS -->
+            </div>
+
+            <div class="invoice-actions" style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+                <button id="trackFromReceiptBtn" class="btn-direct-order" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-weight: 700; padding: 12px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                    🔍 Pantau Proses Memasak Secara Live
+                </button>
+                <a id="successWhatsAppLink" href="#" target="_blank" class="btn-secondary" style="border: 1px solid rgba(255,255,255,0.15); color: #c9ccd6; text-decoration: none; text-align: center; padding: 10px; border-radius: 8px; font-size: 0.84rem; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <span>📲 Simpan Salinan Nota ke WhatsApp (Opsional)</span>
+                </a>
+                <button id="closeSuccessBtn" class="btn-secondary" style="padding: 10px; border-radius: 8px; font-size: 0.84rem;">Tutup & Kembali ke Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- INTERACTIVE QRIS DIGITAL PAYMENT MODAL         -->
+    <!-- ============================================== -->
+    <div id="qrisPaymentModal" class="sheet-backdrop hidden">
+        <div class="dialog-box qris-dialog" style="max-width: 440px; width: 92%; text-align: center; background: #ffffff; color: #111827; border-radius: 16px; padding: 24px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 12px;">
+                <div style="text-align: left;">
+                    <div style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.15rem; color: #b88f48;">SAVORIA QRIS PAY</div>
+                    <div style="font-size: 0.72rem; color: #6b7280;">Standar Pembayaran Nasional QRIS</div>
+                </div>
+                <span style="font-size: 0.72rem; font-weight: 700; background: #ecfdf5; color: #059669; padding: 4px 8px; border-radius: 999px;">Bebas Antre Kasir</span>
+            </div>
+
+            <div style="font-size: 0.8rem; color: #4b5563; margin-bottom: 4px;">Total Tagihan Pesanan Anda:</div>
+            <div id="qrisAmountDisplay" style="font-family: 'Cinzel', serif; font-size: 1.65rem; font-weight: 800; color: #111827; margin-bottom: 12px;">Rp 0</div>
+
+            <div style="background: #f9fafb; border: 2px dashed #d1d5db; border-radius: 12px; padding: 12px; display: inline-block; margin-bottom: 10px;">
+                <img id="qrisCodeImage" src="" alt="QRIS Code" style="width: 190px; height: 190px; display: block; margin: 0 auto;">
+                <div style="font-size: 0.68rem; color: #6b7280; margin-top: 6px;">NMID: ID102026888SAVORIA</div>
+            </div>
+
+            <div style="font-size: 0.76rem; color: #4b5563; line-height: 1.4; margin-bottom: 14px;">
+                Scan QR di atas menggunakan <strong>BCA, Mandiri, BRI, BNI, GoPay, OVO, Dana, ShopeePay</strong> atau m-Banking Anda.
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button id="confirmQrisPaidBtn" style="background: linear-gradient(135deg, #059669, #047857); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);">
+                    ✓ Konfirmasi / Simulasi Bayar Berhasil
+                </button>
+                <button id="cancelQrisBtn" style="background: transparent; border: 1px solid #d1d5db; color: #6b7280; padding: 9px; border-radius: 8px; font-size: 0.82rem; cursor: pointer;">
+                    Batal / Ganti ke Bayar di Kasir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- CUSTOMER ORDER TRACKING MODAL                  -->
+    <!-- ============================================== -->
+    <div id="trackOrderModal" class="sheet-backdrop hidden">
+        <div class="dialog-box tracking-dialog" style="max-width: 520px; width: 92%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 class="dialog-title" style="margin: 0; font-family: 'Cinzel', serif;">Status Pesanan Tamu</h3>
+                <button class="sheet-close-btn" id="closeTrackModalBtn" style="position: static; font-size: 1.1rem; padding: 4px 8px;">✕</button>
+            </div>
+            <p class="dialog-sub" style="margin-bottom: 18px;">Pantau langsung status pengerjaan hidangan Anda di dapur secara real-time.</p>
+
+            <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+                <input type="text" id="trackOrderIdInput" class="kitchen-search-input" style="flex: 1; padding: 10px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 0.88rem;" placeholder="Masukkan No. Pesanan (misal: SVR-...)">
+                <button id="searchTrackOrderBtn" class="btn-primary" style="padding: 10px 18px; white-space: nowrap; font-weight: 600; cursor: pointer;">Cari Status</button>
+            </div>
+
+            <div id="trackOrderResult" style="display: none;">
+                <!-- Tracking details & visual progress bar injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Quick Set Menu Planner Button -->
+    <button class="subtle-floating-concierge" id="floatingComboBtn" title="Buka Perencana Paket Menu Hemat">
+        <span class="concierge-crest">🍱</span>
+        <span>Paket Hemat</span>
+    </button>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-stack"></div>
+
+    <script src="/static/app.js?v=3.0"></script>
+</body>
+</html>

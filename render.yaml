@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: savoria-restaurant-ai
+    runtime: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    region: singapore
+    envVars:
+      - key: DB_TYPE
+        value: sqlite
+      - key: RESTAURANT_NAME
+        value: Savoria Japanese Dining
+      - key: RESTAURANT_WHATSAPP_NUMBER
+        value: 6281234567890
