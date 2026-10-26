@@ -18,11 +18,10 @@ from fastapi.responses import FileResponse, Response
 import db
 
 def render_view_or_error(filename: str):
-    """Jika MySQL Laragon belum aktif, kembalikan respon standar 500 Internal Server Error."""
-    if not db.is_mysql_active():
-        return Response(content="Internal Server Error", status_code=500, media_type="text/plain")
-    
+    """Menampilkan halaman tampilan antarmuka (View) HTML."""
     view_file = os.path.join(VIEWS_DIR, filename)
+    if not os.path.exists(view_file):
+        return Response(content=f"View {filename} not found", status_code=404, media_type="text/plain")
     return FileResponse(view_file, headers=NO_CACHE_HEADERS)
 
 @router.get("/")
